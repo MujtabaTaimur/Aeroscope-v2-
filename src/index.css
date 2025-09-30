@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Aviation-themed dark design system */
+    --background: 210 100% 6%;
+    --foreground: 210 20% 98%;
+
+    --card: 210 50% 10%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 210 50% 10%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 190 100% 50%;
+    --primary-foreground: 210 100% 6%;
+
+    --secondary: 210 50% 20%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 210 50% 15%;
+    --muted-foreground: 210 20% 65%;
+
+    --accent: 190 100% 50%;
+    --accent-foreground: 210 100% 6%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 210 50% 20%;
+    --input: 210 50% 20%;
+    --ring: 190 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom aviation tokens */
+    --aviation-glow: 190 100% 50%;
+    --panel-glass: 210 50% 10% / 0.8;
+    --gradient-primary: linear-gradient(135deg, hsl(210 100% 8%), hsl(210 100% 12%));
+    --gradient-accent: linear-gradient(135deg, hsl(190 100% 50%), hsl(200 100% 60%));
+    --shadow-glow: 0 0 20px hsl(190 100% 50% / 0.3);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Leaflet map styling */
+  .leaflet-container {
+    @apply bg-background;
+  }
+
+  .leaflet-popup-content-wrapper {
+    @apply bg-card/90 backdrop-blur-sm rounded-lg border border-border shadow-lg;
+  }
+
+  .leaflet-popup-content {
+    @apply text-foreground;
+  }
+
+  .leaflet-popup-tip {
+    @apply bg-card/90;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/50 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary;
+}
+
+/* Marker cluster styling */
+.marker-cluster-custom {
+  background: transparent !important;
+}
+
+.cluster-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 14px;
+  color: hsl(var(--primary-foreground));
+  background: hsl(var(--primary) / 0.9);
+  border: 2px solid hsl(var(--primary));
+  box-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+  transition: var(--transition-smooth);
+}
+
+.cluster-small {
+  width: 40px;
+  height: 40px;
+  background: hsl(var(--primary) / 0.8);
+}
+
+.cluster-medium {
+  width: 50px;
+  height: 50px;
+  background: hsl(190 100% 45% / 0.85);
+  box-shadow: 0 0 25px hsl(190 100% 45% / 0.6);
+}
+
+.cluster-large {
+  width: 60px;
+  height: 60px;
+  background: hsl(180 100% 40% / 0.9);
+  box-shadow: 0 0 30px hsl(180 100% 40% / 0.7);
+  font-size: 16px;
+}
+
+.cluster-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px hsl(var(--primary) / 0.8);
+}
